@@ -109,6 +109,14 @@ a { color: var(--blue); }
   justify-content: center;
 }
 
+/* Splash screen: lock to one viewport, no scroll — for clean full-page captures */
+#screen-splash {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px;
+}
+
 .screen.active {
   display: flex;
   flex-direction: column;
@@ -169,7 +177,7 @@ a { color: var(--blue); }
 .splash-logo-hero-img {
   display: block;
   width: 100%;
-  max-width: 420px;
+  max-width: 240px;
   height: auto;
   /* Drop shadow so it pops off dark background */
   filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.55))
@@ -220,21 +228,23 @@ a { color: var(--blue); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  justify-content: center;
+  gap: clamp(10px, 2.5vh, 24px);
   width: 100%;
   max-width: 520px;
-  padding: 32px 0 32px;
+  height: 100%;
+  padding: 0;
 }
 
 .splash-brand {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   width: 100%;
 }
 
 /* Splash visual card */
 .splash-visual {
-  margin-bottom: 28px;
+  margin-bottom: 0;
   width: 100%;
   max-width: 320px;
 }
@@ -324,7 +334,7 @@ a { color: var(--blue); }
   gap: 12px;
   width: 100%;
   max-width: 320px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 /* Trust strip */
@@ -1085,10 +1095,9 @@ a { color: var(--blue); }
   .card--role { max-width: 100%; }
   .card--dashboard { margin: 16px auto; }
 
-  .splash-layout { padding: 24px 0 20px; }
   .splash-actions { max-width: 280px; }
 
-  .splash-logo-hero-img { max-width: 300px; }
+  .splash-logo-hero-img { max-width: 180px; }
   .card-logo { height: 36px; }
 
   .role-cards {
@@ -1112,7 +1121,7 @@ a { color: var(--blue); }
 
 @media (min-width: 768px) {
   .screen { padding: 40px 24px; }
-  .splash-layout { padding: 48px 0 40px; max-width: 560px; }
-  .splash-logo-hero-img { max-width: 480px; }
+  .splash-layout { max-width: 560px; }
+  .splash-logo-hero-img { max-width: 280px; }
   .card--dashboard { padding: 36px 36px; }
 }
