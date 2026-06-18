@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnity - Home Screen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="home_style.css">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="Logo.png" alt="CommUnity Logo" class="brand-logo-img">
+            <div class="logo-text-wrapper">
+                <span class="logo-text">
+                    <span class="logo-comm">Comm</span><span class="logo-unity">Unity</span>
+                </span>
+                <span class="logo-tagline">"Connecting Students, One Ride at a Time"</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active-nav">Home</a>
+            <a href="#">About US</a>
+            <a href="#">Safety</a>
+            <a href="#">For Drivers</a>
+        </nav>
+        <div class="nav-right">
+            <button class="btn-register" id="registerNowTrigger">Register Now</button>
+            <button class="btn-learn" id="learnMoreTrigger">Learn More</button>
+        </div>
+    </header>
+
+    <main class="home-container">
+        <div class="welcome-row">
+            <div class="welcome-text">
+                <h1 id="welcomeHeading">Welcome back, Student! 👋</h1>
+                <p>What would you like to do today?</p>
+            </div>
+            
+            <div class="notification-area">
+                <div class="notification-trigger" id="notifTrigger">
+                    <i class="fa-solid fa-bell bell-icon"></i>
+                    <span class="alert-badge hidden" id="notifAlertBadge"></span>
+                    <span class="trigger-label">Match Notifications</span>
+                </div>
+
+                <div class="dropdown-overlay hidden" id="notifDropdown">
+                    <div class="dropdown-header" id="dropdownTitle">New Match Found!</div>
+                    <div id="dropdownCardWrapper">
+                        <div class="match-item-card" id="matchItemCard">
+                            <div class="match-meta">
+                                <span class="driver-title" id="driverTitle">Verified Driver Match</span>
+                                <span class="badge-status" id="driverBadge">Active Student</span>
+                            </div>
+                            <p class="match-desc" id="routeDetails">Heading to Campus — 3 slots left</p>
+                        </div>
+                    </div>
+                    <div class="dropdown-footer">
+                        <button class="btn-see-more" id="seeMoreNotifTrigger">See More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="action-grid">
+            <div class="action-card" id="findRideCard">
+                <div class="icon-circle blue-bg">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <h2>Find a Ride</h2>
+                <p>Search for open carpools heading to your campus.</p>
+                <button class="action-btn">Find Ride</button>
+            </div>
+
+            <div class="action-card" id="offerRideCard">
+                <div class="icon-circle blue-bg">
+                    <i class="fa-solid fa-motorcycle"></i>
+                </div>
+                <h2>Offer a Ride</h2>
+                <p>Have extra space? Post your route to pick up fellow students.</p>
+                <button class="action-btn">Offer Ride</button>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <h3>Today's Available Rides</h3>
+            <div class="search-wrap">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="locationSearchInput" class="custom-search-input" placeholder="Enter your pickup Barangay or Campus to view real-time matches...">
+                <div id="locationDropdown" class="location-results-dropdown hidden"></div>
+            </div>
+            
+            <div id="emptyStatePlaceholder" class="empty-state-box">
+                <div class="empty-icon-circle">
+                    <i class="fa-solid fa-map-pin"></i>
+                </div>
+                <p id="emptyStateText">"Enter your route above to look for available commutes."</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="learnMoreModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>About CommUnity</h2>
+                <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Placeholder area for system description, framework overview, or project documentation guidelines from teammates.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="allNotifsModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>All Match Notifications</h2>
+                <button class="modal-close-btn" id="notifModalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body history-list" id="modalHistoryList">
+            </div>
+        </div>
+    </div>
+
+    <script src="home_script.js"></script>
+</body>
+</html>
