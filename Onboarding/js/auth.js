@@ -57,9 +57,4 @@ export async function logoutUser() {
   }
 }
 
-// Optional: expose auth helpers if used inline in HTML
-window.loginUser = loginUser;
-window.registerUser = registerUser;
-window.resetPassword = resetPassword;
-window.logoutUser = logoutUser;
 

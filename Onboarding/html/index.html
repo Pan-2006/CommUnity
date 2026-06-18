@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CommUnity — Page 6: Components Library</title>
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Inter:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
     <canvas id="bg-canvas"></canvas>
@@ -41,11 +44,11 @@
     </header>
 
     <main class="container">
-        
+
         <div class="grid-row">
             <div class="card ride-card" id="rideCard">
                 <p class="label">Commute Matcher</p>
-                
+
                 <div class="mode-toggle">
                     <button class="toggle-btn active" onclick="toggleMode(this, 'passenger')">Find Ride</button>
                     <button class="toggle-btn" onclick="toggleMode(this, 'driver')">Offer Ride</button>
@@ -58,29 +61,23 @@
                         <div class="dot blue"></div>
                     </div>
                     <div class="location-inputs">
-                        <input 
-                            type="text" 
-                            id="pickupInput" 
-                            class="custom-select" 
-                            placeholder="Enter pickup location"
-                        >
-                        <input 
-                            type="text" 
-                            id="dropoffInput" 
-                            class="custom-select" 
-                            placeholder="Enter destination"
-                        >
+                        <input type="text" id="pickupInput" class="custom-select" placeholder="Enter pickup location">
+                        <input type="text" id="dropoffInput" class="custom-select" placeholder="Enter destination">
                     </div>
                 </div>
-                
+
                 <div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <div class="icon-circle blue-bg" style="width: 32px; height: 32px; font-size: 10px; font-weight: bold;">JD</div>
-                        <span id="driverDisplay" style="font-size: 0.85rem; font-weight: 500;">Select locations...</span>
+                        <div class="icon-circle blue-bg"
+                            style="width: 32px; height: 32px; font-size: 10px; font-weight: bold;">JD</div>
+                        <span id="driverDisplay" style="font-size: 0.85rem; font-weight: 500;">Select
+                            locations...</span>
                     </div>
                     <div style="text-align: right;">
-                        <span id="priceDisplay" style="font-family: 'Gasoek One'; color: var(--green); display: block;">₱ 0.00</span>
-                        <small style="font-size: 0.6rem; color: var(--text-hint); text-transform: uppercase;">Fuel Contribution</small>
+                        <span id="priceDisplay"
+                            style="font-family: 'Gasoek One'; color: var(--green); display: block;">₱ 0.00</span>
+                        <small style="font-size: 0.6rem; color: var(--text-hint); text-transform: uppercase;">Fuel
+                            Contribution</small>
                     </div>
                 </div>
             </div>
@@ -98,10 +95,12 @@
                 </div>
 
                 <div style="margin-top: 20px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 5px; align-items: center;">
+                    <div
+                        style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 5px; align-items: center;">
                         <span style="color: var(--text-secondary); display: flex; align-items: center; gap: 5px;">
-                            Community Trust Score 
-                            <i class="fa-solid fa-circle-info" style="color: var(--text-hint); cursor: help;" title="Unlocks matching priority, post-paid emergency rides, and point multipliers."></i>
+                            Community Trust Score
+                            <i class="fa-solid fa-circle-info" style="color: var(--text-hint); cursor: help;"
+                                title="Unlocks matching priority, post-paid emergency rides, and point multipliers."></i>
                         </span>
                         <span style="color: var(--green); font-weight: 800;">98%</span>
                     </div>
@@ -110,8 +109,10 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 0.65rem; background: rgba(34, 197, 94, 0.15); color: var(--green); padding: 2px 6px; border-radius: 4px; font-weight: 700; white-space: nowrap;">
+                <div
+                    style="margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px;">
+                    <span
+                        style="font-size: 0.65rem; background: rgba(34, 197, 94, 0.15); color: var(--green); padding: 2px 6px; border-radius: 4px; font-weight: 700; white-space: nowrap;">
                         <i class="fa-solid fa-bolt"></i> Elite Status
                     </span>
                     <marquee scrollamount="2" style="font-size: 0.7rem; color: var(--text-secondary); width: 100%;">
@@ -127,12 +128,14 @@
                 <button class="action-btn-pill" id="payInputBtn">
                     <i class="fa-solid fa-wallet"></i> Top Up Wallet
                 </button>
-                <button class="action-btn-pill" id="payFinalBtn" style="border-color: var(--green-border); background: var(--green-light);">
+                <button class="action-btn-pill" id="payFinalBtn"
+                    style="border-color: var(--green-border); background: var(--green-light);">
                     <i class="fa-solid fa-check-double"></i> Pay ₱ <span class="totalPay">0.00</span>
                 </button>
             </div>
 
-            <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="card"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div class="sos-btn" id="sosBtn">
                     <div class="sos-progress" id="sosProgress"></div>
                     <div class="sos-text">
@@ -140,7 +143,9 @@
                         <small style="font-size: 0.6rem; opacity: 0.8; letter-spacing: 1px;">HOLD</small>
                     </div>
                 </div>
-                <p style="font-size: 0.7rem; color: var(--text-hint); margin-top: 12px; font-weight: 600; text-align: center;">Emergency Contact: <br>Campus Security</p>
+                <p
+                    style="font-size: 0.7rem; color: var(--text-hint); margin-top: 12px; font-weight: 600; text-align: center;">
+                    Emergency Contact: <br>Campus Security</p>
             </div>
 
             <div class="card">
@@ -164,54 +169,72 @@
 
         <div class="grid-row three-col">
             <div class="card empty-box" id="ridesContainerCard">
-                <div class="icon-main-circle" style="background: rgba(0, 129, 241, 0.1); color: #0081f1; width: 60px; height: 60px;">
+                <div class="icon-main-circle"
+                    style="background: rgba(0, 129, 241, 0.1); color: #0081f1; width: 60px; height: 60px;">
                     <i class="fa-solid fa-route" id="routeIcon"></i>
                 </div>
-                <div id="ridesDynamicContent" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <div id="ridesDynamicContent"
+                    style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                     <h3 style="font-weight: 800; font-size: 1.1rem; margin-top: 10px;">No active rides</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 15px;">Drivers haven't posted routes for today.</p>
-                    <button class="btn-primary" id="refreshRidesBtn" style="padding: 8px 20px; font-size: 0.8rem;">Refresh</button>
+                    <p
+                        style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 15px;">
+                        Drivers haven't posted routes for today.</p>
+                    <button class="btn-primary" id="refreshRidesBtn"
+                        style="padding: 8px 20px; font-size: 0.8rem;">Refresh</button>
                 </div>
             </div>
 
             <div class="card empty-box">
-                <div class="icon-main-circle" style="background: rgba(255, 165, 0, 0.1); color: orange; width: 60px; height: 60px;">
+                <div class="icon-main-circle"
+                    style="background: rgba(255, 165, 0, 0.1); color: orange; width: 60px; height: 60px;">
                     <i class="fa-solid fa-map-location-dot"></i>
                 </div>
                 <h3 style="font-weight: 800; font-size: 1.1rem; margin-top: 10px;">No Match</h3>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 15px;">No students heading to your gate yet.</p>
-                <button class="btn-primary" id="notifyMeBtn" style="background: orange; border:none; padding: 8px 20px; font-size: 0.8rem; transition: var(--transition);">Notify Me</button>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 15px;">No
+                    students heading to your gate yet.</p>
+                <button class="btn-primary" id="notifyMeBtn"
+                    style="background: orange; border:none; padding: 8px 20px; font-size: 0.8rem; transition: var(--transition);">Notify
+                    Me</button>
             </div>
 
             <div class="card empty-box">
-                <div class="icon-main-circle" style="background: rgba(39, 180, 90, 0.1); color: var(--green); width: 60px; height: 60px;">
+                <div class="icon-main-circle"
+                    style="background: rgba(39, 180, 90, 0.1); color: var(--green); width: 60px; height: 60px;">
                     <i class="fa-solid fa-ranking-star"></i>
                 </div>
                 <h3 style="font-weight: 800; font-size: 1.1rem; margin-top: 10px;">Leaderboard</h3>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 15px;">You are #14 in your course.</p>
-                <button class="btn-primary" id="openLeaderboardBtn" style="background: var(--green); border:none; padding: 8px 20px; font-size: 0.8rem;">View Ranks</button>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 15px;">You
+                    are #14 in your course.</p>
+                <button class="btn-primary" id="openLeaderboardBtn"
+                    style="background: var(--green); border:none; padding: 8px 20px; font-size: 0.8rem;">View
+                    Ranks</button>
             </div>
-        </div> 
+        </div>
     </main>
 
     <div id="leaderboardDrawer" class="drawer">
         <div class="drawer-content card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px;">
-                <h2 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--green);"><i class="fa-solid fa-trophy"></i> Campus Ranks</h2>
-                <button id="closeLeaderboardBtn" style="background:none; border:none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; padding: 5px;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px;">
+                <h2 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--green);"><i
+                        class="fa-solid fa-trophy"></i> Campus Ranks</h2>
+                <button id="closeLeaderboardBtn"
+                    style="background:none; border:none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; padding: 5px;">
                     <i class="fa-solid fa-xmark" style="pointer-events: none;"></i>
                 </button>
             </div>
-            
+
             <div style="display: flex; flex-direction: column; gap: 12px;">
                 <div class="leaderboard-item rank-1">
                     <span class="rank-num">1</span>
-                    <div class="rank-details"><strong>Maria Santos</strong><small>BS Civil Eng • 52 Rides Shared</small></div>
+                    <div class="rank-details"><strong>Maria Santos</strong><small>BS Civil Eng • 52 Rides Shared</small>
+                    </div>
                     <span class="rank-points">2,450 pts</span>
                 </div>
                 <div class="leaderboard-item rank-2">
                     <span class="rank-num">2</span>
-                    <div class="rank-details"><strong>David Lee</strong><small>BS Info Tech • 48 Rides Shared</small></div>
+                    <div class="rank-details"><strong>David Lee</strong><small>BS Info Tech • 48 Rides Shared</small>
+                    </div>
                     <span class="rank-points">2,110 pts</span>
                 </div>
                 <div class="leaderboard-item rank-3">
@@ -219,9 +242,11 @@
                     <div class="rank-details"><strong>Alyssa Cruz</strong><small>BA Comm • 41 Rides Shared</small></div>
                     <span class="rank-points">1,950 pts</span>
                 </div>
-                <div class="leaderboard-item user-rank" style="margin-top: 15px; background: rgba(0, 107, 255, 0.15); border: 1px solid var(--blue-border);">
+                <div class="leaderboard-item user-rank"
+                    style="margin-top: 15px; background: rgba(0, 107, 255, 0.15); border: 1px solid var(--blue-border);">
                     <span class="rank-num" style="background: var(--blue);">14</span>
-                    <div class="rank-details"><strong>Juan Dela Cruz (You)</strong><small>BS Comp Sci • 12 Rides</small></div>
+                    <div class="rank-details"><strong>Juan Dela Cruz (You)</strong><small>BS Comp Sci • 12 Rides</small>
+                    </div>
                     <span class="rank-points" style="color: var(--blue);">680 pts</span>
                 </div>
             </div>
@@ -234,16 +259,21 @@
             <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px;">
                 Enter your mobile account number and target top-up amount.
             </p>
-            
-            <input type="text" id="gcashNumber" placeholder="09XX-XXX-XXXX" class="custom-select" style="margin-bottom: 12px; text-align: center;">
-            
+
+            <input type="text" id="gcashNumber" placeholder="09XX-XXX-XXXX" class="custom-select"
+                style="margin-bottom: 12px; text-align: center;">
+
             <div style="position: relative; margin-bottom: 20px;">
-                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-family: 'Gasoek One'; color: var(--green); font-size: 0.9rem;">₱</span>
-                <input type="number" id="topUpAmount" placeholder="0.00" min="1" step="any" class="custom-select" style="padding-left: 35px; text-align: left;">
+                <span
+                    style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-family: 'Gasoek One'; color: var(--green); font-size: 0.9rem;">₱</span>
+                <input type="number" id="topUpAmount" placeholder="0.00" min="1" step="any" class="custom-select"
+                    style="padding-left: 35px; text-align: left;">
             </div>
 
             <button class="btn-primary" style="width: 100%;" id="savePayment">Authorize & Pay</button>
-            <button style="background:none; border:none; color: var(--text-hint); margin-top: 15px; cursor: pointer; font-size: 0.8rem;" onclick="document.getElementById('paymentModal').style.display='none'">Cancel</button>
+            <button
+                style="background:none; border:none; color: var(--text-hint); margin-top: 15px; cursor: pointer; font-size: 0.8rem;"
+                onclick="document.getElementById('paymentModal').style.display='none'">Cancel</button>
         </div>
     </div>
 
@@ -278,6 +308,10 @@
         init(); animate();
     </script>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/firebase-config.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/script.js"></script>
 </body>
+
 </html>

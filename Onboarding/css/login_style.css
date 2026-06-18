@@ -401,11 +401,15 @@ a { color: var(--blue); }
 }
 
 /* ── Forms ───────────────────────────── */
+.hidden { display: none !important; }
+
 .auth-form, #form-profile {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
+
+.hidden { display: none !important; }
 
 .auth-form.hidden { display: none; }
 
@@ -694,13 +698,43 @@ a { color: var(--blue); }
 .timer-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   font-size: 13px;
   color: var(--text-hint);
-  justify-content: center;
   margin: 8px 0 4px;
 }
 .timer-row strong { color: var(--text-secondary); }
+
+.reset-meta {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.reset-meta.visible {
+  display: flex;
+}
+
+.reset-meta p {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.reset-meta .timer-row {
+  width: 100%;
+  justify-content: center;
+}
+
+.reset-meta button {
+  width: auto;
+  align-self: center;
+}
 
 /* Resend */
 .resend-row {

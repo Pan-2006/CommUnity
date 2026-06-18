@@ -8,7 +8,7 @@
             "type": "editor-browser",
             "request": "launch",
             "name": "Launch Integrated Browser against localhost",
-            "url": "C:/Users/Marvin Sangco/Documents/GitHub/CommUnity/Onboarding/Login_page.html",
+            "url": "C:/Users/Marvin Sangco/Documents/GitHub/CommUnity/Onboarding/html/login.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

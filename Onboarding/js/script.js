@@ -1,3 +1,5 @@
+import { loginUser, registerUser, resetPassword, logoutUser } from "./auth.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- State Variables ---
     let walletBalance = 0.00;
