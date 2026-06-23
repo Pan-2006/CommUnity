@@ -167,6 +167,107 @@ body {
 .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(11, 20, 55, 0.98); backdrop-filter: blur(30px); border: 1px solid var(--glass-border-strong); box-shadow: var(--shadow-card); padding: 12px 24px; border-radius: 30px; font-size: 0.9rem; font-weight: 500; z-index: 1000; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
+#map {
+  width: 100%;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  position: relative;
+}
+
+.map-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 16px;
+  z-index: 1;
+}
+
+.map-fallback i {
+  font-size: 1.6rem;
+  opacity: 0.6;
+}
+
+.map-fallback.hidden { display: none; }
+
+.route-preview-box {
+  min-height: 120px;
+  margin-top: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.route-preview-box i {
+  font-size: 1.4rem;
+  opacity: 0.5;
+}
+
+.route-preview-box.has-route {
+  background: rgba(0, 107, 255, 0.08);
+  border-color: rgba(0, 107, 255, 0.25);
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 16px;
+}
+
+.route-line-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.route-point-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.route-point-preview i {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  width: 16px;
+  text-align: center;
+}
+
+.route-point-preview--start i {
+  color: var(--blue);
+}
+
+.route-point-preview--end i {
+  color: var(--green);
+}
+
+.route-line-preview--line {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--blue), var(--green));
+  margin-left: 7px;
+  opacity: 0.5;
+  border-radius: 1px;
+}
+
 @media(max-width: 600px) {
     .hidden-mobile { display: none; }
     .glass-card { padding: 20px; border-radius: 0; border: none; border-top: 1px solid var(--glass-border-strong); }

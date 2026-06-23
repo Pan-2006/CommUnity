@@ -44,6 +44,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Ride integration
+let pickupLocation = null;
+let dropoffLocation = null;
+
+function updateRoutePreview() {
+    const preview = document.getElementById('route-preview');
+    if (!preview) return;
+
+    const pickup = document.getElementById('find-pickup')?.value?.trim();
+    const dropoff = document.getElementById('find-dropoff')?.value?.trim();
+
+    if (pickup && dropoff) {
+        preview.innerHTML = `
+            <div class="route-line-preview">
+                <div class="route-point-preview route-point-preview--start">
+                    <i class="fa-solid fa-circle-dot"></i>
+                    <span>${pickup}</span>
+                </div>
+                <div class="route-line-preview--line"></div>
+                <div class="route-point-preview route-point-preview--end">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                    <span>${dropoff}</span>
+                </div>
+            </div>
+        `;
+        preview.classList.add('has-route');
+    } else {
+        preview.innerHTML = `<i class="fa-solid fa-route"></i><span>Your route will appear here after searching</span>`;
+        preview.classList.remove('has-route');
+    }
+}
+
 function switchTab(tabId) {
     // Buttons
     document.getElementById('tab-find').classList.remove('active');
@@ -70,6 +102,10 @@ function searchRides() {
         showToast("Please enter both pickup and destination.");
         return;
     }
+
+    updateRoutePreview();
+
+    console.log('Searching rides for', { pickup, dropoff, time });
 
     const resultsContainer = document.getElementById('match-results');
     const resultsList = document.getElementById('results-list');
@@ -113,6 +149,39 @@ function requestRide(btnElement) {
     btnElement.innerText = "Requested!";
     btnElement.style.background = "var(--green)";
     showToast("Ride request sent to the driver.");
+
+    const matchCard = btnElement.closest('.match-card');
+    if (!matchCard) return;
+
+    const driverName = matchCard.querySelector('.driver-details h4')?.textContent || 'Driver';
+    const vehicle = matchCard.querySelector('.driver-details p')?.textContent || '';
+    const cost = matchCard.querySelector('.match-contribution')?.textContent || '₱0.00';
+    const seats = matchCard.querySelector('.match-seats')?.textContent || '';
+
+    const tripData = {
+      from: 'Your Barangay',
+      to: 'Campus',
+      departure: 'Today · 9:15 AM',
+      seats: seats.replace(' seats', '') + ' available',
+      fare: cost,
+      status: 'Confirmed',
+      driverName: driverName,
+      driverInitials: driverName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase(),
+      driverRating: '4.9 ⭐',
+      driverVehicle: vehicle.replace(/•/g, '·'),
+      pickup: 'Main Entrance, University Avenue',
+      dropoff: 'Central Barangay Market, Near Gate 2',
+      notes: 'Bring a reusable bag and be ready at the gate by 9:10 AM.'
+    };
+
+    try {
+      localStorage.setItem('commUnityTripDetails', JSON.stringify(tripData));
+    } catch (e) {}
+
+    const tripUrl = '../../Trip Details/html/trip_details.html';
+    setTimeout(() => {
+      window.location.replace(tripUrl);
+    }, 800);
 }
 
 function postRide() {
@@ -127,7 +196,6 @@ function postRide() {
 
     showToast("Ride successfully posted! Waiting for passengers.");
     
-    // Clear inputs after post
     document.getElementById('offer-pickup').value = "";
     document.getElementById('offer-time').value = "";
     document.getElementById('offer-seats').value = "";

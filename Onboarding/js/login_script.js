@@ -282,6 +282,71 @@ const App = {
     }
   },
 
+  /* ── Profile / role selection / dashboard helpers ────────── */
+  selectRole(role) {
+    if (!role) return;
+    userData.role = role;
+    const riderBtn = document.getElementById('role-rider');
+    const driverBtn = document.getElementById('role-driver');
+    const continueBtn = document.getElementById('role-continue-btn');
+
+    if (riderBtn && driverBtn) {
+      riderBtn.classList.toggle('selected', role === 'rider');
+      riderBtn.setAttribute('aria-checked', role === 'rider');
+      driverBtn.classList.toggle('selected', role === 'driver');
+      driverBtn.setAttribute('aria-checked', role === 'driver');
+    }
+    if (continueBtn) continueBtn.disabled = false;
+  },
+
+  handleRole() {
+    if (!userData.role) {
+      App.showToast('Please choose a role before continuing.', 'error');
+      return;
+    }
+    App.goTo('screen-dashboard');
+  },
+
+  populateDashboard() {
+    const welcomeName = document.getElementById('welcome-name');
+    const welcomeMeta = document.getElementById('welcome-meta');
+    const ctaLabel = document.getElementById('cta-label');
+    const mainCta = document.getElementById('main-cta');
+
+    if (welcomeName) {
+      welcomeName.textContent = userData.name || 'Welcome to CommUnity!';
+    }
+    if (welcomeMeta) {
+      welcomeMeta.textContent = userData.role
+        ? `Logged in as ${userData.role === 'driver' ? 'Driver' : 'Rider'}`
+        : 'Ready to find your first ride.';
+    }
+    if (ctaLabel) {
+      ctaLabel.textContent = userData.role === 'driver' ? 'Offer a Ride' : 'Find a Ride';
+    }
+    if (mainCta) {
+      mainCta.onclick = App.handleDashboardCta;
+    }
+  },
+
+  handleDashboardCta() {
+    const target = userData.role === 'driver'
+      ? '../../Ride/html/offer_ride.html'
+      : '../../Ride/html/find_ride.html';
+    window.location.href = target;
+  },
+
+  handleProfile() {
+    userData.name = document.getElementById('profile-name')?.value.trim() || '';
+    userData.course = document.getElementById('profile-course')?.value.trim() || '';
+    userData.barangay = document.getElementById('profile-barangay')?.value || '';
+    App.goTo('screen-role');
+  },
+
+  skipProfile() {
+    App.goTo('screen-role');
+  },
+
   // … rest of your methods unchanged …
 };
 

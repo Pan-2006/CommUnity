@@ -122,33 +122,6 @@ body {
   max-width: 620px;
 }
 
-.trip-summary {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-bottom: 22px;
-}
-
-.trip-route {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 18px;
-  padding: 18px 20px;
-}
-
-.trip-route--end {
-  background: rgba(255,255,255,0.06);
-}
-
-.route-label {
-  display: block;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  margin-bottom: 6px;
-}
-
 .trip-meta-grid {
   display: grid;
   gap: 14px;
@@ -184,23 +157,70 @@ body {
   color: #C8F2D5;
 }
 
-.map-placeholder {
-  min-height: 220px;
+.route-preview-box {
+  min-height: 100px;
   margin-bottom: 24px;
-  background: linear-gradient(160deg, rgba(0,107,255,0.14), rgba(34,197,94,0.12));
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 22px;
-  position: relative;
-  display: grid;
-  place-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
 }
 
-.map-badge {
-  color: var(--text-secondary);
-  font-size: 13px;
-  background: rgba(0,0,0,0.22);
-  border-radius: 999px;
-  padding: 10px 18px;
+.route-preview-box i {
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+.route-preview-box.has-route {
+  background: rgba(0, 107, 255, 0.06);
+  border-color: rgba(0, 107, 255, 0.2);
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 18px 20px;
+}
+
+.route-line-preview {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.route-point-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.route-point-preview i {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  width: 16px;
+  text-align: center;
+}
+
+.route-point-preview--start i {
+  color: var(--blue);
+}
+
+.route-point-preview--end i {
+  color: var(--green);
+}
+
+.route-line-preview--line {
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(to bottom, var(--blue), var(--green));
+  margin-left: 7px;
+  opacity: 0.4;
+  border-radius: 1px;
 }
 
 .driver-card {
@@ -334,7 +354,7 @@ body {
 }
 
 @media (max-width: 720px) {
-  .trip-summary, .trip-meta-grid, .actions-row {
+  .trip-meta-grid, .actions-row {
     grid-template-columns: 1fr;
   }
 
