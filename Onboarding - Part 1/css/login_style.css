@@ -177,7 +177,7 @@ a { color: var(--blue); }
 .splash-logo-hero-img {
   display: block;
   width: 100%;
-  max-width: 240px;
+  max-width: 400px;
   height: auto;
   /* Drop shadow so it pops off dark background */
   filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.55))
@@ -198,7 +198,7 @@ a { color: var(--blue); }
   display: block;
   height: 44px;
   width: auto;
-  max-width: 220px;
+  max-width: 400px;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
 }
 
@@ -231,7 +231,7 @@ a { color: var(--blue); }
   justify-content: center;
   gap: clamp(10px, 2.5vh, 24px);
   width: 100%;
-  max-width: 520px;
+  max-width: 620px;
   height: 100%;
   padding: 0;
 }
@@ -409,8 +409,6 @@ a { color: var(--blue); }
   gap: 16px;
 }
 
-.hidden { display: none !important; }
-
 .auth-form.hidden { display: none; }
 
 .field-group {
@@ -467,6 +465,11 @@ a { color: var(--blue); }
 }
 
 .field-input.error {
+  border-color: var(--error);
+  background: var(--error-bg);
+}
+
+.field-input.input-error {
   border-color: var(--error);
   background: var(--error-bg);
 }
@@ -1131,7 +1134,7 @@ a { color: var(--blue); }
 
   .splash-actions { max-width: 280px; }
 
-  .splash-logo-hero-img { max-width: 180px; }
+  .splash-logo-hero-img { max-width: 280px; }
   .card-logo { height: 36px; }
 
   .role-cards {

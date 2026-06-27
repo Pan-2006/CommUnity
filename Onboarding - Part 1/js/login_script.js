@@ -1,72 +1,85 @@
+"use strict";
+
 import { registerUser, loginUser, resetPassword } from "../js/auth.js";
-console.log('login_script.js loaded');
 
-/**
- * CommUnity — login_script.js
- * Handles: login, signup, verification, profile, role selection, dashboard, background animation.
- */
-
-'use strict';
-
-/* ── App state ────────────────────────── */
 const userData = {
-  email: '',
-  password: '',
-  name: '',
-  course: '',
-  barangay: '',
-  role: ''        // 'rider' | 'driver'
+  email: "",
+  password: "",
+  name: "",
+  course: "",
+  barangay: "",
+  role: ""
 };
 
-/* ── App controller ──────────────────── */
 const App = {
-
-  /* Navigate to a screen by its element id */
   goTo(screenId, context) {
-    const current = document.querySelector('.screen.active');
-    const next = document.getElementById(screenId);
-    if (!next || current === next) return;
+    const currentScreen = document.querySelector(".screen.active");
+    const nextScreen = document.getElementById(screenId);
 
-    if (current) current.classList.remove('active');
-    next.classList.add('active');
+    if (!nextScreen || currentScreen === nextScreen) {
+      return;
+    }
 
-    // Context-aware side effects
-    if (screenId === 'screen-auth' && context) {
+    if (currentScreen) {
+      currentScreen.classList.remove("active");
+    }
+
+    nextScreen.classList.add("active");
+
+    if (screenId === "screen-auth" && context) {
       App.switchTab(context);
     }
-    if (screenId === 'screen-verify') {
-      App.initVerify();
-    }
-    if (screenId === 'screen-dashboard') {
+
+    if (screenId === "screen-dashboard") {
       App.populateDashboard();
     }
 
-    // Scroll to top on mobile
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   },
 
   /* ── Tab switcher (Login / Sign Up) ── */
   switchTab(tab) {
-    const loginForm = document.getElementById('form-login');
-    const signupForm = document.getElementById('form-signup');
-    const loginTab = document.getElementById('tab-login');
-    const signupTab = document.getElementById('tab-signup');
-    const tabSlider = document.getElementById('tab-slider');
+    const loginForm = document.getElementById("form-login");
+    const signupForm = document.getElementById("form-signup");
+    const loginTab = document.getElementById("tab-login");
+    const signupTab = document.getElementById("tab-signup");
+    const tabSlider = document.getElementById("tab-slider");
 
-    if (!loginForm || !signupForm || !loginTab || !signupTab || !tabSlider) return;
+    if (
+      !loginForm ||
+      !signupForm ||
+      !loginTab ||
+      !signupTab ||
+      !tabSlider
+    ) {
+      return;
+    }
 
-    const isLogin = tab === 'login';
-    loginForm.classList.toggle('hidden', !isLogin);
-    signupForm.classList.toggle('hidden', isLogin);
+    const isLogin = tab === "login";
 
-    loginTab.classList.toggle('active', isLogin);
-    loginTab.setAttribute('aria-selected', isLogin ? 'true' : 'false');
-    signupTab.classList.toggle('active', !isLogin);
-    signupTab.setAttribute('aria-selected', isLogin ? 'false' : 'true');
+    loginForm.classList.toggle("hidden", !isLogin);
+    signupForm.classList.toggle("hidden", isLogin);
 
-    const target = isLogin ? loginTab : signupTab;
-    tabSlider.style.width = `${target.offsetWidth}px`;
-    tabSlider.style.left = `${target.offsetLeft}px`;
+    loginTab.classList.toggle("active", isLogin);
+    signupTab.classList.toggle("active", !isLogin);
+
+    loginTab.setAttribute(
+      "aria-selected",
+      isLogin ? "true" : "false"
+    );
+
+    signupTab.setAttribute(
+      "aria-selected",
+      isLogin ? "false" : "true"
+    );
+
+    const selectedTab = isLogin ? loginTab : signupTab;
+
+    tabSlider.style.width = `${selectedTab.offsetWidth}px`;
+    tabSlider.style.left = `${selectedTab.offsetLeft}px`;
   },
 
   /* ── UI helpers ───────────────────── */
@@ -87,6 +100,10 @@ const App = {
     const el = document.getElementById(elementId);
     if (!el) return;
     el.textContent = message;
+  },
+
+  isSchoolEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.edu\.ph$/i.test(email);
   },
 
   setInputError(inputId, hasError) {
@@ -131,7 +148,7 @@ const App = {
       App.showError('reset-email-err', 'Email is required.');
       App.setInputError('reset-email', true);
       valid = false;
-    } else if (!email.toLowerCase().includes('.edu.ph')) {
+    } else if (!App.isSchoolEmail(email)) {
       App.showError('reset-email-err', 'Please use your official .edu.ph school email.');
       App.setInputError('reset-email', true);
       valid = false;
@@ -229,7 +246,7 @@ const App = {
       App.showError('login-email-err', 'Email is required.');
       App.setInputError('login-email', true);
       valid = false;
-    } else if (!email.toLowerCase().includes('.edu.ph')) {
+    } else if (!App.isSchoolEmail(email)) {
       App.showError('login-email-err', 'Please use your official .edu.ph school email.');
       App.setInputError('login-email', true);
       valid = false;
@@ -262,13 +279,41 @@ const App = {
     const confirm = document.getElementById('signup-confirm').value;
     let valid = true;
 
-    // validation (same as before)...
+    if (!email) {
+      App.showError('signup-email-err', 'Email is required.');
+      App.setInputError('signup-email', true);
+      valid = false;
+    } else if (!App.isSchoolEmail(email)) {
+      App.showError('signup-email-err', 'Please use your official .edu.ph school email.');
+      App.setInputError('signup-email', true);
+      valid = false;
+    }
+
+    if (!pw) {
+      App.showError('signup-pw-err', 'Password is required.');
+      App.setInputError('signup-password', true);
+      valid = false;
+    } else if (pw.length < 6) {
+      App.showError('signup-pw-err', 'Password must be at least 6 characters.');
+      App.setInputError('signup-password', true);
+      valid = false;
+    }
+
+    if (!confirm) {
+      App.showError('signup-confirm-err', 'Please confirm your password.');
+      App.setInputError('signup-confirm', true);
+      valid = false;
+    } else if (pw !== confirm) {
+      App.showError('signup-confirm-err', 'Passwords do not match.');
+      App.setInputError('signup-confirm', true);
+      valid = false;
+    }
 
     if (valid) {
       const result = await registerUser(email, pw, {
-        name: document.getElementById('profile-name').value || '',
-        course: document.getElementById('profile-course').value || '',
-        barangay: document.getElementById('profile-barangay').value || ''
+        name: document.getElementById('profile-name')?.value || '',
+        course: document.getElementById('profile-course')?.value || '',
+        barangay: document.getElementById('profile-barangay')?.value || ''
       });
 
       if (result.success) {
@@ -305,6 +350,14 @@ const App = {
       return;
     }
     App.goTo('screen-dashboard');
+  },
+
+  handleVerify() {
+    App.showToast('Email code verification is not connected yet.', 'error');
+  },
+
+  resendCode() {
+    App.showToast('Verification code resend is not connected yet.', 'error');
   },
 
   populateDashboard() {
@@ -373,10 +426,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bind UI buttons safely after DOM is ready
-  document.getElementById('login-btn')?.addEventListener('click', () => App.handleLogin());
-  document.getElementById('signup-btn')?.addEventListener('click', () => App.handleSignup());
-  document.getElementById('resend-btn')?.addEventListener('click', () => App.resendCode());
+  if (window.location.protocol === 'file:') {
+    App.showToast('Open this page from a local server so Firebase modules can load.', 'error');
+  }
 });
 
 /* ── Animated canvas background ─────── */
@@ -384,5 +436,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // … unchanged …
 })();
 
-// Expose App globally for legacy inline handlers
 window.App = App;
