@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnity - Safety Guidelines</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/about_safety_style.css">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="../images/Logo.png" alt="CommUnity Logo" class="brand-logo-img">
+            <div class="logo-text-wrapper">
+                <span class="logo-text">
+                    <span class="logo-comm">Comm</span><span class="logo-unity">Unity</span>
+                </span>
+                <span class="logo-tagline">"Connecting Students, One Ride at a Time"</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="../html/home.html">Home</a>
+            <a href="../html/about.html">About US</a>
+            <a href="../html/safety.html" class="active-nav">Safety</a>
+        </nav>
+        <div class="nav-right">
+            <button class="btn-register" id="registerNowTrigger">Register Now</button>
+            <button class="btn-learn" id="learnMoreTrigger">Learn More</button>
+        </div>
+    </header>
+
+    <main class="home-container">
+        <div class="welcome-row">
+            <div class="welcome-text">
+                <h1>Safety Protocols 🛡️</h1>
+                <p>Your institutional trust and overall protection remain our top operational priorities.</p>
+            </div>
+        </div>
+
+        <section class="action-grid" style="max-width: 900px;">
+            <div class="action-card" style="padding: 35px; cursor: default;">
+                <div class="icon-circle blue-bg">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <h2>Institutional Verification</h2>
+                <p style="margin-bottom: 0; margin-top: 12px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">All riders and drivers are strictly cross-verified utilizing secure official student registration portals and university email databases.</p>
+            </div>
+
+            <div class="action-card" style="padding: 35px; cursor: default;">
+                <div class="icon-circle blue-bg">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2>Ride Security Triggers</h2>
+                <p style="margin-bottom: 0; margin-top: 12px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">Live match logs, localized real-time path updates, and single-tap dynamic alert shortcuts tracking student transits end-to-end.</p>
+            </div>
+        </section>
+
+        <section class="search-section" style="max-width: 900px; margin: 0 auto; width: 100%;">
+            <h3>Student Commuter Code of Conduct</h3>
+            <div class="empty-state-box" style="text-align: left; align-items: flex-start; padding: 35px; border-style: solid;">
+                <ul style="list-style-type: none; display: flex; flex-direction: column; gap: 18px; font-size: 0.95rem; color: var(--text-secondary); width: 100%;">
+                    <li><i class="fa-solid fa-check" style="color: var(--green); margin-right: 12px;"></i> Always double-check matching profile indicators before getting inside any matched pooled vehicle.</li>
+                    <li><i class="fa-solid fa-check" style="color: var(--green); margin-right: 12px;"></i> Treat every single peer student driver or commuter rider with maximum institutional courtesy.</li>
+                    <li><i class="fa-solid fa-check" style="color: var(--green); margin-right: 12px;"></i> Keep real-time transaction updates active via the matching notification stream layout interface.</li>
+                    <li><i class="fa-solid fa-check" style="color: var(--green); margin-right: 12px;"></i> Immediately log anomalies or routing issues straight into the central help desk modal module.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="learnMoreModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>About CommUnity</h2>
+                <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body" style="color: #fff; font-family: 'Inter', sans-serif; line-height: 1.7; text-align: center; padding: 45px 30px;">
+                <div style="font-size: 3.5rem; color: #3b82f6; margin-bottom: 22px; filter: drop-shadow(0 0 15px rgba(59,130,246,0.6));">
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+                <p style="font-size: 1.1rem; color: #e5e7eb; margin: 0 auto; max-width: 520px; font-weight: 500;">
+                    Discover how <span style="color: #3b82f6; font-weight: 800; text-shadow: 0 0 10px rgba(59,130,246,0.4);">CommUnity</span> makes campus travel more convenient by connecting student riders and drivers based on their routes and schedules.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/about_safety_script.js"></script>
+</body>
+</html>
