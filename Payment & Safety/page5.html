@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments & Safety</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <main class="screen active">
+    <div class="card card--dashboard">
+
+      <div class="brand-mark">
+        <img src="logos/logo.png" class="card-logo" alt="">
+      </div>
+
+      <h1 class="page-title">Payments & Safety</h1>
+
+      <section class="payment-card">
+        <h2>Estimated Fuel Contribution</h2>
+        <p class="amount">₱50.00</p>
+      </section>
+
+      <section class="payment-methods">
+        <button class="payment-btn" data-payment="gcash">
+          <img src="logos/gcash.png" alt="">
+          GCash
+        </button>
+
+        <button class="payment-btn" data-payment="maya">
+          <img src="logos/maya.png" alt="">
+          Maya
+        </button>
+
+        <button class="payment-btn" data-payment="cash">
+          Cash
+        </button>
+      </section>
+
+      <section class="safety-section">
+
+        <div class="badge-card">
+          <img src="logos/verified-badge.svg.png" alt="">
+          <span>Verified Student</span>
+        </div>
+
+        <button id="sos-btn" class="btn btn--primary btn--green">
+          SOS Emergency
+        </button>
+
+        <button id="report-btn" class="btn btn--outline">
+          Report User
+        </button>
+
+      </section>
+
+      <section class="rating-section">
+        <h2>Rate Your Trip</h2>
+
+        <div class="stars">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+
+        <textarea
+          id="feedback"
+          class="field-input"
+          placeholder="Leave feedback..."
+        ></textarea>
+
+        <button id="submit-rating" class="btn btn--primary btn--full">
+          Submit Rating
+        </button>
+      </section>
+
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
